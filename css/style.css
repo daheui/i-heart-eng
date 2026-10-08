@@ -38,9 +38,9 @@ input,textarea,select{font:inherit;color:var(--ink)}
 .bar .b{display:flex;gap:4px}
 .bar .b i{width:12px;height:12px;background:#fff;border:1.5px solid var(--ink);display:block}
 .body{padding:12px}
-.body.dots{background-image:radial-gradient(var(--p0) 1.8px,transparent 2.2px);background-size:12px 12px}
-.body.lemon{background:var(--m0);background-image:radial-gradient(var(--m1) 1.8px,transparent 2.2px);background-size:12px 12px}
-.body.mint{background:var(--s0);background-image:radial-gradient(var(--s1) 1.8px,transparent 2.2px);background-size:12px 12px}
+.body.dots{background-image:radial-gradient(#EDE6FF 1.6px,transparent 2px);background-size:14px 14px}
+.body.lemon{background:var(--m0);background-image:radial-gradient(#FFF1C9 1.6px,transparent 2px);background-size:14px 14px}
+.body.mint{background:var(--s0);background-image:radial-gradient(#D4F6EA 1.6px,transparent 2px);background-size:14px 14px}
 
 /* ---------- buttons ---------- */
 .gel{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;font-family:var(--font-ui);font-weight:600;font-size:17px;color:var(--ink);text-transform:uppercase;letter-spacing:.02em;
@@ -172,13 +172,13 @@ nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:5;display:grid;grid-temp
 .segment button{padding:5px 10px;font-family:var(--font-ui);font-size:13px;font-weight:600;color:var(--muted)}
 .segment button.on{background:var(--p0);color:var(--ink)}
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.cal .wd{font-family:var(--font-ui);font-size:11px;color:var(--muted);text-align:center}
-.cal-day{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-family:var(--font-ui);font-size:13px;font-weight:600;color:var(--ink);background:transparent;border:2px solid transparent}
+.cal .wd{font-family:var(--font-ui);font-size:12px;color:var(--ink);text-align:center;background:#fff;border:2px solid #E8E2F5;padding:2px 0}
+.cal-day{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-family:var(--font-ui);font-size:14px;font-weight:600;color:var(--ink);background:#fff;border:2px solid #E8E2F5}
 .cal-day.blank{visibility:hidden}
 .cal-day.has{background:#fff;border-color:var(--ink)}
 .cal-day.done{background:var(--p1);color:#fff;border-color:var(--ink)}
 .cal-day.today{outline:2px dashed var(--s2);outline-offset:-3px}
-.cal-day[disabled]{color:var(--muted);opacity:.6}
+.cal-day[disabled]{color:var(--muted)}
 .cal-day .dot{width:6px;height:6px;background:var(--m2);border:1px solid var(--ink)}
 .cal-day .dot.none{visibility:hidden}
 .list{display:flex;flex-direction:column;gap:8px}
