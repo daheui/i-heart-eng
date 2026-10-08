@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E6DEFF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="I ♥ ENG">
+<title>I ♥ ENG</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Pixelify+Sans:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ====== AUTH ====== -->
+<section id="screen-auth" class="screen" hidden>
+  <div class="auth-wrap">
+    <div class="logo-block">
+      <div class="logo-heart">I <span class="heart">♥</span> ENG</div>
+      <div class="pixel">daily shadowing · with friends</div>
+    </div>
+    <div class="win"><div class="bar"><span class="t">LOGIN.EXE</span><span class="b"><i></i><i></i><i></i></span></div><div class="body dots">
+      <div class="tabs2">
+        <button class="tab2 on" data-auth="login">Log in</button>
+        <button class="tab2" data-auth="signup">Sign up</button>
+      </div>
+      <form id="auth-form" class="form">
+        <div class="field"><label for="a-email">Email</label><input id="a-email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="a-pass">Password</label><input id="a-pass" type="password" autocomplete="current-password" minlength="6" required></div>
+        <div class="field signup-only" hidden><label for="a-nick">Nickname</label><input id="a-nick" type="text" maxlength="16" placeholder="what friends will see"></div>
+        <div class="field signup-only" hidden><label for="a-invite">Invite code</label><input id="a-invite" type="text" autocomplete="off" placeholder="ask the person who invited you"></div>
+        <p class="err" id="auth-err" hidden></p>
+        <button class="gel pink wide" id="auth-submit" type="submit">Log in</button>
+      </form>
+    </div></div>
+    <p class="tiny center" id="auth-note">Made with ♥ by three friends on the way to New York.</p>
+  </div>
+</section>
+
+<!-- ====== ONBOARDING ====== -->
+<section id="screen-onboard" class="screen" hidden>
+  <div class="onb-wrap">
+    <div class="win onb-card"><div class="bar"><span class="t">WELCOME.TXT</span><span class="b"><i></i><i></i><i></i></span></div><div class="body">
+      <div class="onb-dots" id="onb-dots"></div>
+      <div id="onb-body" class="onb-body ko"></div>
+      <div class="row between" style="margin-top:14px">
+        <button class="gel ghost" id="onb-prev">이전</button>
+        <button class="gel pink" id="onb-next">다음</button>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ====== APP ====== -->
+<section id="screen-app" class="screen" hidden>
+  <header class="topbar">
+    <div class="logo-sm">I <span class="heart">♥</span> ENG</div>
+    <div class="row" style="gap:6px">
+      <span class="clock" id="clock"></span>
+      <button class="icon-btn" id="btn-guide" title="Guide" aria-label="Guide">?</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- TODAY -->
+    <div class="view" id="view-today">
+      <div class="win"><div class="bar"><span class="t">STREAK.EXE</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body dots hero">
+        <div class="hero-left">
+          <div class="eyebrow">current streak</div>
+          <div class="big"><span id="streak-n">0</span><small>days</small></div>
+          <div class="sub" id="streak-sub"></div>
+          <div class="row wrap" style="gap:6px;margin-top:8px">
+            <span class="pill" id="rest-pill"></span>
+            <span class="pill mint" id="pos-pill"></span>
+          </div>
+        </div>
+        <div class="hero-right" id="hero-chest"></div>
+      </div>
+      <div class="body lemon" style="border-top:2px solid var(--ink)">
+        <div class="row between">
+          <div class="lbl" id="week-title">this week</div>
+          <div class="nav"><button id="week-prev" aria-label="Previous week">‹</button><button id="week-next" aria-label="Next week">›</button></div>
+        </div>
+        <div class="week" id="week"></div>
+      </div></div>
+
+      <div class="win"><div class="bar"><span class="t">FRIENDS</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body"><div class="friends-row" id="friends-row"></div></div></div>
+
+      <div class="win"><div class="bar"><span class="t">TODAY.TXT</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body dots" id="today-card"></div></div>
+    </div>
+
+    <!-- JOURNEY -->
+    <div class="view" id="view-journey" hidden>
+      <div class="win"><div class="bar"><span class="t">JOURNEY.EXE</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body dots">
+        <div class="lbl">seoul → new york</div>
+        <h2 id="journey-title">Day 0 of 100</h2>
+        <div class="sub" id="journey-sub"></div>
+        <div class="lbl" style="margin-top:10px;font-size:12px">HP → New York</div>
+        <div class="hp" id="hp"></div>
+      </div></div>
+      <div class="win"><div class="bar"><span class="t">MAP.BMP</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body map-panel"><div id="map"></div><div class="map-hint">← swipe to see the whole route →</div></div></div>
+      <div class="win"><div class="bar"><span class="t">STOPS</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body lemon" id="journey-legend"></div></div>
+    </div>
+
+    <!-- LOUNGE -->
+    <div class="view" id="view-lounge" hidden>
+      <div class="win lounge-panel"><div class="bar"><span class="t">LOUNGE.CHAT</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body lounge-body">
+        <div id="msgs" class="msgs"></div>
+        <form id="msg-form" class="msg-form">
+          <label class="icon-btn" for="msg-photo" title="Photo">📷<input type="file" id="msg-photo" accept="image/*" hidden></label>
+          <button type="button" class="icon-btn" id="msg-sticker" title="Sticker">★</button>
+          <input id="msg-text" type="text" placeholder="say something cute" maxlength="500" autocomplete="off">
+          <button class="gel pink small" type="submit">Send</button>
+        </form>
+        <div class="sticker-tray" id="sticker-tray" hidden></div>
+      </div></div>
+    </div>
+
+    <!-- ARCHIVE -->
+    <div class="view" id="view-archive" hidden>
+      <div class="win"><div class="bar"><span class="t">ARCHIVE.DAT</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body dots">
+        <div class="row between">
+          <div><h2 id="cal-title"></h2></div>
+          <div class="nav"><button id="cal-prev" aria-label="Previous month">‹</button><button id="cal-next" aria-label="Next month">›</button></div>
+        </div>
+        <div class="row between wrap" style="margin:8px 0">
+          <div class="segment" id="cal-mode"><button class="on" data-mode="grid">Calendar</button><button data-mode="list">List</button><button data-mode="star">Starred</button></div>
+          <select id="cal-who" class="select"></select>
+        </div>
+        <div id="cal-body"></div>
+      </div></div>
+      <div class="win reader" id="reader-win" hidden><div class="bar"><span class="t">SCRIPT.TXT</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body" id="reader"></div></div>
+    </div>
+
+    <!-- ME -->
+    <div class="view" id="view-me" hidden>
+      <div class="win"><div class="bar"><span class="t">PROFILE.EXE</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body dots me-card">
+        <label class="avatar-edit" for="me-avatar-file" title="Change photo">
+          <img id="me-avatar" alt="">
+          <span class="avatar-plus">✎</span>
+          <input type="file" id="me-avatar-file" accept="image/*" hidden>
+        </label>
+        <div class="me-fields">
+          <input id="me-nick" class="inline-input nick" maxlength="16" placeholder="nickname">
+          <input id="me-motto" class="inline-input motto" maxlength="60" placeholder="한 줄 다짐 · one-line promise">
+          <button class="gel mint small" id="me-save">Save profile</button>
+        </div>
+      </div></div>
+      <div class="win"><div class="bar"><span class="t">STATS</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body"><div class="stats" id="me-stats"></div></div></div>
+      <div class="win"><div class="bar"><span class="t">TREASURE</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body lemon"><div class="chests" id="chests"></div></div></div>
+      <div class="win"><div class="bar"><span class="t">SETTINGS</span><span class="b"><i></i><i></i><i></i></span></div>
+      <div class="body">
+        <div class="row between wrap" style="gap:8px">
+          <button class="gel sky small" id="btn-guide2">📖 Guide</button>
+          <button class="gel ghost small" id="btn-export">Export my data</button>
+          <button class="gel ghost small" id="btn-logout">Log out</button>
+        </div>
+        <p class="tiny" style="margin:10px 0 0">I ♥ ENG · v1.0 · recordings older than 30 days are removed automatically unless starred or shared.</p>
+      </div></div>
+    </div>
+  </main>
+
+  <nav class="tabs">
+    <button class="tab on" data-tab="today"><span class="ti">🏠</span>TODAY</button>
+    <button class="tab" data-tab="journey"><span class="ti">🗺️</span>JOURNEY</button>
+    <button class="tab" data-tab="lounge"><span class="ti">💬</span>LOUNGE</button>
+    <button class="tab" data-tab="archive"><span class="ti">📅</span>ARCHIVE</button>
+    <button class="tab" data-tab="me"><span class="ti">⭐</span>ME</button>
+  </nav>
+</section>
+
+<!-- ====== EDITOR (sheet) ====== -->
+<div class="sheet" id="editor" hidden>
+  <div class="sheet-box win"><div class="bar"><span class="t">EDIT.TXT</span><span class="b"><i></i><i></i><i></i></span></div><div class="body">
+    <div class="row between">
+      <h2 id="ed-title">Today's script</h2>
+      <button class="star" id="ed-star" aria-label="Star">★</button>
+    </div>
+    <div class="form">
+      <div class="field"><label for="ed-date">Date</label><input type="date" id="ed-date"></div>
+      <div class="field"><label for="ed-name">Title / source</label><input type="text" id="ed-name" placeholder="e.g. Emma Chamberlain vlog — coffee part"></div>
+      <div class="field"><label for="ed-video">YouTube link</label><input type="url" id="ed-video" inputmode="url" placeholder="paste the video link"></div>
+      <div class="field"><label for="ed-start">Start at (min:sec)</label><input type="text" id="ed-start" inputmode="numeric" placeholder="e.g. 1:30"></div>
+      <div class="field"><label for="ed-script">Script</label><textarea id="ed-script" class="script" placeholder="Paste today's script. One line per sentence works best."></textarea></div>
+      <div class="field"><label for="ed-notes">Notes</label><textarea id="ed-notes" placeholder="linking, reductions, tricky sounds, 3 expressions to keep…"></textarea></div>
+      <p class="err" id="ed-err" hidden></p>
+      <button class="gel pink wide" id="ed-save">Save script</button>
+      <div class="row between">
+        <button class="linkbtn" id="ed-delete">Delete this day</button>
+        <button class="linkbtn" id="ed-close">Close</button>
+      </div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ====== MODALS ====== -->
+<div class="modal" id="chest-modal" hidden>
+  <div class="modal-box win center"><div class="bar"><span class="t">TREASURE.EXE</span><span class="b"><i></i><i></i><i></i></span></div><div class="body lemon">
+    <div class="chest-art" id="chest-art"></div>
+    <div class="badge" id="chest-badge"></div>
+    <h2 id="chest-title"></h2>
+    <p id="chest-msg"></p>
+    <button class="gel pink" id="chest-close">Keep going</button>
+  </div></div>
+</div>
+
+<div class="modal" id="guide-modal" hidden>
+  <div class="modal-box win guide-box"><div class="bar"><span class="t">GUIDE.TXT</span><span class="b"><i></i><i></i><i></i></span></div><div class="body">
+    <div class="row between"><h2>Guide</h2><button class="icon-btn" id="guide-close">X</button></div>
+    <div class="guide-body ko" id="guide-body"></div>
+  </div></div>
+</div>
+
+<div class="modal" id="confirm-modal" hidden>
+  <div class="modal-box win center"><div class="bar"><span class="t">CONFIRM</span><span class="b"><i></i><i></i><i></i></span></div><div class="body">
+    <h2 id="confirm-title"></h2>
+    <p id="confirm-msg"></p>
+    <div class="row center" style="gap:8px;flex-wrap:wrap">
+      <button class="gel pink" id="confirm-ok">OK</button>
+      <button class="gel ghost" id="confirm-cancel">Cancel</button>
+    </div>
+  </div></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
